@@ -1,17 +1,15 @@
-# https://school.programmers.co.kr/learn/courses/30/lessons/12952
-
 def check(n, table, row, col):
-    for i in range(1, n):
-        if table[row][i] == "Q" or table[i][col] == "Q":
+    for i in range(0, row):
+        if table[i][col] == "Q":
             return False
-        nRow = [1, 0, -1, 0, 1, -1, 1, -1]
-        nCol = [0, 1, 0, -1, 1, -1, -1, 1]
-        for j in range(8):
-            dRow = row + i * nRow[j]
-            dCol = col + i * nCol[j]
-            if dRow >= 0 and dRow < n and dCol >= 0 and dCol < n:
-                if table[dRow][dCol] == "Q":
-                    return False
+
+        if col - (row - i) >= 0:
+            if table[i][col - (row - i)] == "Q":
+                return False
+        if col + (row - i) < n:
+            if table[i][col + (row - i)] == "Q":
+                return False
+
     return True
 
 def dfs(n, table, row):
@@ -32,10 +30,11 @@ def dfs(n, table, row):
 def solution(n):
     answer = 0
 
+    # table = [[0] * n] * n
     table = [[0] * n for _ in range(n)]
-    row = 0
 
-    answer = dfs(n, table, row)
+    answer = dfs(n, table, 0)
+
     return answer
 
 result = solution(4)
