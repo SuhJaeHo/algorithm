@@ -12,7 +12,7 @@ def up_down(char):
 
     curr = ord(char)
 
-    if curr >= mid:
+    if curr > mid:
         return end - curr + 1
 
     return curr - ini

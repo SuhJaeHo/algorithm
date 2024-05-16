@@ -1,3 +1,5 @@
+# https://school.programmers.co.kr/learn/courses/30/lessons/12952
+
 def check(n, table, row, col):
     for i in range(0, row):
         if table[i][col] == "Q":
